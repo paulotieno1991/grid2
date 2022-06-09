@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">grid2</string>
+    <string name="home_icon">Home</string>
+    <string name="search">Search</string>
+    <string name="todo">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="dashboard">DashBoard</string>
+    <string name="todo3">TODO</string>
+    <string name="contribute">CONTRIBUTE</string>
+    <string name="todo4">TODO</string>
+    <string name="practice">PRACTICE</string>
+    <string name="todo5">TODO</string>
+    <string name="learn">LEARN</string>
+    <string name="todo6">TODO</string>
+    <string name="interests">INTERESTS</string>
+    <string name="todo7">TODO</string>
+    <string name="help">HELP</string>
+    <string name="todo8">TODO</string>
+    <string name="settings">SETTINGS</string>
+    <string name="dashboard2">DASHBOARD2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="td">TODO</string>
+</resources>
