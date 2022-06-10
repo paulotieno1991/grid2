@@ -1,48 +1,50 @@
 package com.example.grid2;
 
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-
-
-public class MainActivity extends AppCompatActivity {
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNav);
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.home);
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                if (item.getItemId() != R.id.home) {
-                    Toast.makeText(getApplicationContext(),"Hello profile",Toast.LENGTH_SHORT).show();
-//                return item.getItemId() == R.id.home;
-                    selectedFragment= new HomeFragment();
-                    return true;
+    }
+    HomeFragment firstFragment = new HomeFragment();
+    ProfileFragment secondFragment = new ProfileFragment();
 
-                } else {
+    @SuppressLint({"NonConstantResourceId", "ShowToast"})
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                overridePendingTransition(0, 0);
+        switch (item.getItemId()) {
+            case R.id.home:
+                Toast.makeText(MainActivity.this,"Home",Toast.LENGTH_SHORT);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, firstFragment).commit();
+                Log.e("e","Home");
                 return true;
 
-                }
-
-            }
-        });
+            case R.id.profile:
+                Toast.makeText(MainActivity.this,"Home",Toast.LENGTH_SHORT);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, secondFragment).commit();
+                Log.e("e","Profile");
+                return true;
+        }
+        return false;
     }
 }
